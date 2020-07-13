@@ -1,0 +1,10 @@
+{
+    "plugins": ["@babel/plugin-proposal-export-default-from"],
+    "presets": [
+        ["env", {
+          "targets": {
+            "browsers": ["last 2 versions", "safari >= 7"]
+          }
+        }]
+      ]
+}
