@@ -62,14 +62,8 @@ module.exports = {
     // get user by id
     async show (req, res) {
         try {
-            if (req.params.userId == '-1') {
-                const user = await User.findAll({
-                    limit: 1,
-                    order: [ [ 'createdAt', 'DESC' ]]
-                  })
-            }else{
-                const user = await User.findById(req.params.userId)
-            }
+            const user = await User.findById(req.params.userId)
+            
             if(!user){
                 return res.status(403).send({
                     error: 'The user information was '+req.params.userId
