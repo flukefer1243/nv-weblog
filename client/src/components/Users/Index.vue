@@ -8,6 +8,7 @@
             <p>email: {{ user.email }}</p>
             <p>password: {{ user.password }}</p>
             <p><button v-on:click="navigateTo('/user/'+user.id)">ดูข้อมูลผู้ใช้</button></p>
+            <p><button v-on:click="logout">Logout</button></p>
         </div>
     </div>
 </template>
@@ -37,6 +38,11 @@
         methods: {
            navigateTo (route){
                this.$router.push(route)
+           },
+           logout(){
+               this.$store.dispatch('setToken',null)
+               this.$store.dispatch('setUser',null)
+               this.$router.push({name: 'login'})
            }
         }
     }
