@@ -1,5 +1,6 @@
 const UserController = require('./controllers/UserController')
 const UserAuthenController = require('./controllers/UserAuthenController')
+const CargoController = require('./controllers/CargoController')
 const isAuthenController = require('./authen/isAuthenController')
 
 module.exports = (app) => {
@@ -32,5 +33,32 @@ module.exports = (app) => {
     // login user
     app.post('/login',
         UserAuthenController.login
+    )
+
+
+
+        // create cargo
+    app.post('/cargo',
+        CargoController.create
+    )
+    // edit cargo, suspend, active
+    app.put('/cargo/:cargoId',
+        CargoController.put
+    )
+    // delete cargo
+    app.delete('/cargo/:cargoId',
+        CargoController.remove
+    )
+    // get cargo by id
+    app.get('/cargo/:cargoId',
+        CargoController.show
+    )
+    // get all cargo
+    app.get('/cargos',
+        CargoController.index
+    )
+    // get last cargo
+    app.get('/lastcargo',
+        CargoController.showlast
     )
 }
